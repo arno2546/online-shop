@@ -177,7 +177,6 @@
     </Compile>
     <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\ViewModels\CartViewModel.cs" />
-    <Compile Include="Models\ViewModels\CheckoutViewModel.cs" />
     <Compile Include="Models\ViewModels\ContactViewModel.cs" />
     <Compile Include="Models\ViewModels\OrderViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductViewModel.cs" />
@@ -343,7 +342,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Checkout\List.cshtml" />
-    <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
