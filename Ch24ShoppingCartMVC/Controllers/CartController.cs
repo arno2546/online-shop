@@ -40,7 +40,11 @@ namespace Ch24ShoppingCartMVC.Controllers {
       [HttpPost]
       public RedirectToRouteResult List(OrderViewModel order) {
          CartViewModel model = cart.GetCart(order.SelectedProduct.ProductID);
-         //Assign the quantity of the selected product to the quantity of the added product
+            //Assign the quantity of the selected product to the quantity of the added product
+            if (order.SelectedProduct.Quantity < 0)
+            {
+                return RedirectToAction("Index", "Order");
+            }
          model.AddedProduct.Quantity = order.SelectedProduct.Quantity;
          //Call the method AddtoCart
          cart.AddToCart(model);

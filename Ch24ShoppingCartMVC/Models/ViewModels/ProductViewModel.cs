@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,7 @@ namespace Ch24ShoppingCartMVC.Models {
       public string LongDescription { get; set; }
       public decimal UnitPrice { get; set; }
       public string ImageFile { get; set; }
+      [Range(0,50)]
       public int Quantity { get; set; }
 
       //display item's property values
