@@ -130,12 +130,31 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account.cs">
+      <DependentUpon>AccountModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AccountModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\CartModel.cs" />
     <Compile Include="Models\DataAccess\Halloween.Context.cs">
@@ -257,8 +276,25 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Halloween.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Models\AccountModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AccountModel.edmx</DependentUpon>
+      <LastGenOutput>AccountModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AccountModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AccountModel.edmx</DependentUpon>
+      <LastGenOutput>AccountModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\DataAccess\Halloween.edmx.diagram">
       <DependentUpon>Halloween.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\AccountModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AccountModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AccountModel.edmx.diagram">
+      <DependentUpon>AccountModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Models\DataAccess\Halloween.Context.tt">
@@ -309,6 +345,7 @@
     <Content Include="Views\Checkout\List.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\Checkout\Confirmation.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
