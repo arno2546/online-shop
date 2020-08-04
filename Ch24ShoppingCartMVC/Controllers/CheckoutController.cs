@@ -12,43 +12,26 @@ namespace Ch24ShoppingCartMVC.Controllers {
 
       public RedirectToRouteResult Index() {
          return RedirectToAction("List/");
-      }//close Index()
+      }
 
 
       [HttpGet]
       public ActionResult List() {
-         CartViewModel model = (CartViewModel)TempData["cart"];
-         //if the model is null, then call the method GetCart
+         CartViewModel model = (CartViewModel)TempData["cart"];         
          if (model == null)
-            model = cart.GetCart();
-         //Passing model to View
+            model = cart.GetCart();        
          return View(model);
-      }//close List()
+      }
 
 
       [HttpPost]
       public RedirectToRouteResult List(OrderViewModel order) {
-         CartViewModel model = cart.GetCart(order.SelectedProduct.ProductID);
-         //Assign the quantity of the selected product to the quantity of the added product
+         CartViewModel model = cart.GetCart(order.SelectedProduct.ProductID);         
          model.AddedProduct.Quantity = order.SelectedProduct.Quantity;
-         //Call the method AddtoCart
-         cart.AddToCart(model);
-         //Assign model to the TempData
+         cart.AddToCart(model);         
          TempData["cart"] = model;
          return RedirectToAction("Index", "Checkout");
-      }//close List(...)
+      }
 
-
-      [HttpPost]
-      public RedirectToRouteResult SubmitCheckout() {
-         return RedirectToAction("Confirmation", "Checkout");
-      }//close SubmitCheckout()
-
-
-      [HttpGet]
-      public ActionResult Confirmation() {
-         return View();
-      }//close Confirmation()
-
-   }//close class CheckoutController
-}//close namespace Ch24ShoppingCartMVC.Controllers
+   }
+}

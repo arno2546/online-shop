@@ -344,7 +344,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Checkout\List.cshtml" />
     <Content Include="Views\Home\Confirmation.cshtml" />
-    <Content Include="Views\Checkout\Confirmation.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
