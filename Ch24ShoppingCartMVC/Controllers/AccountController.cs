@@ -24,10 +24,11 @@ namespace Ch24ShoppingCartMVC.Controllers
             {
                 if (acc.Password == verfAccount.Password)
                 {
-                    ViewBag.Loggedin = true;
-                    return View("~/Views/Success/Success.cshtml");
+                    Session["LoggedIn"] = 1;
+                    return RedirectToAction("Index","Order");
                 }
             }
+            Session["LoggedIn"] = 0;
             return RedirectToAction("Index");
         }
     }

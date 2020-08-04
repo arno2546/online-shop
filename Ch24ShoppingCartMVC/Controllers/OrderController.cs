@@ -12,33 +12,47 @@ namespace Ch24ShoppingCartMVC.Controllers {
 
       [HttpGet]
       public ActionResult Index(string id) {
-         //get list for drop down from temp data called products 
-         SelectList products = (SelectList)TempData["products"];
-         if (products == null) {
-            //CALL THE METHOD GetProductList 
-            var list = order.GetProductsList();
-            //CREATE THE SelectList products
-            products = new SelectList(list, "ProductId", "Name", id);
-         }//end if
-         //if no URL parameter, get first product from list and refresh
-         if (string.IsNullOrEmpty(id)) {
-            id = products.ElementAt(0).Value;
-            //ASSIGN products to temp data called products
-            TempData["products"] = products;
-            //Redirect to the action method Index of the Order controller with id parameter.
-            return RedirectToAction("Index", "Order", new { id });
-         }//end if
-         else { //get selected product and return in view method
-            //Call the method GetOrderInfo to get an OrderViewModel object called model
-            OrderViewModel model = order.GetOrderInfo(id);
-            //Assign products to ProductsList property of model
-            model.ProductsList = products;
-            //Assign the quantity of the SelectProduct of the model to 1
-            model.SelectedProduct.Quantity = 1;
-            //Send the model object to the view.
-            return View(model);
+            int i = (int)Session["LoggedIn"];
+            //get list for drop down from temp data called products 
+            if(i == 1)
+            {
+                
+                SelectList products = (SelectList)TempData["products"];
+                if (products == null)
+                {
+                    //CALL THE METHOD GetProductList 
+                    var list = order.GetProductsList();
+                    //CREATE THE SelectList products
+                    products = new SelectList(list, "ProductId", "Name", id);
+                }//end if
+                    //if no URL parameter, get first product from list and refresh
+                if (string.IsNullOrEmpty(id))
+                {
+                    id = products.ElementAt(0).Value;
+                    //ASSIGN products to temp data called products
+                    TempData["products"] = products;
+                    //Redirect to the action method Index of the Order controller with id parameter.
+                    return RedirectToAction("Index", "Order", new { id });
+                }//end if
+                else
+                { //get selected product and return in view method
+                    //Call the method GetOrderInfo to get an OrderViewModel object called model
+                    OrderViewModel model = order.GetOrderInfo(id);
+                    //Assign products to ProductsList property of model
+                    model.ProductsList = products;
+                    //Assign the quantity of the SelectProduct of the model to 1
+                    model.SelectedProduct.Quantity = 1;
+                    //Send the model object to the view.
+                    return View(model);
+                }
+                
+            }
+             return RedirectToAction("Index", "Account"); 
+            
+            
+            
          }//end else
-      }//close Index(...)
+      //close Index(...)
 
 
       [HttpPost] //post back - get selected ddl value and refresh

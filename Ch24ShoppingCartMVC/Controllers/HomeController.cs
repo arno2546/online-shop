@@ -11,7 +11,7 @@ namespace Ch24ShoppingCartMVC.Controllers {
       public ViewResult Index() {
         ViewBag.HeaderText = "Welcome to the Halloween Store";
         ViewData["FooterText"] = "Where every day is Halloween!";
-        ViewBag.LoggedIn = false;
+        Session["LoggedIn"] = 0;
         return View();
       }//close Controller()
 

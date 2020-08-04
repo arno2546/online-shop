@@ -12,19 +12,29 @@ namespace Ch24ShoppingCartMVC.Controllers {
 
       [HttpGet]
       public RedirectToRouteResult Index() {
-         return RedirectToAction("List/");
+            int i = (int)Session["LoggedIn"];
+        if (i == 1) { 
+                return RedirectToAction("List/"); 
+            }
+        return RedirectToAction("Index", "Account");
+             
       }// close Index()
 
 
       [HttpGet]
-      public ViewResult List() {
-         CartViewModel model = (CartViewModel)TempData["cart"];
-         //if the model is null, then call the method GetCart
-         if (model == null)
-            model = cart.GetCart();
-         //Passing model to View
-         return View(model);
-      }// close List()
+      public ActionResult List() {
+        int i = (int)Session["LoggedIn"];
+            if (i == 1)
+            {
+                CartViewModel model = (CartViewModel)TempData["cart"];
+                //if the model is null, then call the method GetCart
+                if (model == null)
+                    model = cart.GetCart();
+                //Passing model to View
+                return View(model);
+            }
+            return RedirectToAction("Index", "Account");
+        }// close List()
 
 
       [HttpPost]
