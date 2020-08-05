@@ -14,7 +14,6 @@ namespace Ch24ShoppingCartMVC.Controllers {
          return RedirectToAction("List/");
       }
 
-
       [HttpGet]
       public ActionResult List() {
          CartViewModel model = (CartViewModel)TempData["cart"];         
@@ -22,7 +21,6 @@ namespace Ch24ShoppingCartMVC.Controllers {
             model = cart.GetCart();        
          return View(model);
       }
-
 
       [HttpPost]
       public RedirectToRouteResult List(OrderViewModel order) {
