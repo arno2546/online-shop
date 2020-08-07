@@ -17,11 +17,16 @@ namespace Ch24ShoppingCartMVC
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
+        }
+
+        protected void Session_OnStart()
+        {
+            Session["LoggedIn"] = 0;
         }
     }
 }
